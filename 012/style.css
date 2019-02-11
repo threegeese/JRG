@@ -96,7 +96,7 @@ hr {
 
 
 /* main */
-main {
+body > main {
     margin-top: -350px;
 }
 
