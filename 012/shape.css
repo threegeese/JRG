@@ -1,0 +1,62 @@
+body {
+    background-color: blanchedalmond;
+}
+
+#yin-yang {
+    width: 600px;
+    height: 600px;;
+    margin: 20px auto;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 0%,#ffffff 50%,#ffffff 50%,#ff0000 52%,#ff0000 100%); 
+    position: relative;
+}
+
+#yin-yang > .one {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 150px;
+    left: 0;
+}
+
+#yin-yang > .two {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 150px;
+    right: 0;
+}
+
+#yin-yang > .one > .circle{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 110px;
+    left: 110px;
+}
+
+#yin-yang > .two > .circle {
+    width: 80px;
+    height: 80px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 110px;
+    left: 110px;
+}
+
+
+#yijing {
+    writing-mode: vertical-lr;
+    letter-spacing: 4px;
+    font-weight: bold;
+    position: fixed;
+    top: 10%;
+    left: 20%;
+}
