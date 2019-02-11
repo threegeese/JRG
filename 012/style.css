@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-h1,h2,h2,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
 }
 
@@ -219,13 +219,15 @@ body > main .selfIntroduction {
 
 
 /* section */
-section.skills {
+section.skills,
+section.portfolio {
     max-width: 940px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 65px;
+    margin-top: 60px;
 }
-section.skills h2 {
+section.skills h2,
+section.portfolio h2 {
     text-align: center;
     margin-bottom: 30px;
     color: #3d4451;
@@ -233,7 +235,7 @@ section.skills h2 {
     line-height: 1.2;
     font-weight: 600;
 }
-section.skills h3 {
+section.skills h3{
     font-size: 14px;
     line-height: 1.1;
     padding-right: 40px;
@@ -241,20 +243,28 @@ section.skills h3 {
 section.skills ol {
     background-color: white;
     box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+    padding: 40px 50px 10px;
 }
 section.skills ol > li {
     float: left;
-    width: 50%;
+    width: 48%;
+    box-sizing: border-box;
+}
+section.skills ol > li:nth-child(even){
+    float: right;
 }
 
 /* progress */
 section.skills .progressBar {
     height: 5px;
-    border: 1px solid red;
-    
+    background-color: #fae1e1;
+    border-radius: 3px;
+    margin: 4px 0 40px;
 }
 section.skills .progressBar > .progress{
     height: 100%;
     width: 50%;
-    background-color: red;
+    background-color: #e8676b;
+    border-radius: 3px;
 }
+
