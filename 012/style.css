@@ -275,9 +275,9 @@ section.portfolio > nav {
     text-align: center;
     display: inline-block;
     vertical-align: top;
+    margin-bottom: 30px;
 }
 section.portfolio nav ol {
-    border: 1px solid red;
     display: inline-block;
     vertical-align: top;
 }
@@ -295,24 +295,43 @@ section.portfolio > nav .bar{
     background: white;
     border-radius: 3px;
     margin-top: 5px;
-  }
-  section.portfolio > nav .bar-inner{
+}
+section.portfolio > nav .bar-inner{
     height: 100%;
     background: #E6686A;
     border-radius: 3px;
-    margin-bottom: 100px;
     transition: all 0.3s; 
-  }
+}
 
-  section.portfolio > nav .bar.state-1 .bar-inner{
+section.portfolio > nav .bar.state-1 .bar-inner{
     margin-left: 0;
     width: 40px;
-  }
-  section.portfolio > nav .bar.state-2 .bar-inner{
+}
+section.portfolio > nav .bar.state-2 .bar-inner{
     margin-left: 65px;
     width: 50px;
-  }
-  section.portfolio > nav .bar.state-3 .bar-inner{
+}
+section.portfolio > nav .bar.state-3 .bar-inner{
     margin-left: 140px;
     width: 96px;
-  }
+}
+
+section.portfolio .works{
+    position: relative;
+    height: 600px;
+}
+section.portfolio .works > .big,
+section.portfolio .works > .smallRU,
+section.portfolio .works > .smallRD {
+    position: absolute;
+}
+section.portfolio .works > .big {
+    top: 0; 
+    left: 0
+}
+section.portfolio .works > .smallRU {
+    top: 0; left: 645px;
+}
+section.portfolio .works > .smallRD {
+    top: 312px; left: 645px;
+}
