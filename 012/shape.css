@@ -11,13 +11,11 @@ body {
     background-color: #f1f3f4;
 }
 
-#bagua {
-    border: 1px solid black;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    margin: 20px auto;
-    position: relative;
+#text {
+    font-family: 'ZCOOL QingKe HuangYou',cursive;
+    font-size: 36px;
+    letter-spacing: 15px;
+    text-align: center;
 }
 
 #yin-yang {
@@ -25,16 +23,8 @@ body {
     height: 200px;;
     border-radius: 50%;
     background: linear-gradient(to right, #ffffff 0%,#ffffff 0%,#ffffff 50%,#ffffff 50%,#000000 50%,#000000 100%); 
-    position: absolute;
-    top: 200px;
-    left: 200px;
-}
-
-#yin-yang:hover {
-    animation-name: spin;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    position: relative;
+    margin: 100px auto;
 }
 
 #yin-yang::before {
@@ -59,4 +49,11 @@ body {
     position: absolute;
     top: 100px;
     left: 50px;
+}
+
+#yin-yang:hover {
+    animation-name: spin;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }

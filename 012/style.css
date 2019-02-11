@@ -94,7 +94,13 @@ hr {
     background-color: rgba(0,0,0,0.8);
 }
 
-/*  */
+
+/* main */
+main {
+    margin-top: -350px;
+}
+
+/* userCard */
 .userCard {
     max-width: 940px;
     margin-left: auto;
@@ -171,3 +177,4 @@ hr {
     fill: white;
     vertical-align: top;
 }
+
