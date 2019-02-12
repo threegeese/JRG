@@ -53,6 +53,7 @@ body {
 
 
 #yijing {
+    font-family: 'Times New Roman', Times, serif;
     writing-mode: vertical-lr;
     letter-spacing: 4px;
     font-weight: bold;
