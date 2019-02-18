@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+kbd {
+    border: 1px solid red;
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+main {
+    text-align: center;
+}
+
+main > .wrapper  {
+    display: inline-block;
+}
+
+main > #kbdWrapper > div:nth-child(2) {
+    margin-left: 1em;
+}
+
+main > #kbdWrapper > div:nth-child(3) {
+    margin-left: 2em;
+}
+
+main > #kbdWrapper > div > kbd {
+    position: relative;
+}
+
+kbd > button {
+    position: absolute; 
+    right: 0; 
+    bottom: 0; 
+    display: none;
+}
+
+kbd:hover > button {
+    display: inline-block;
+}
