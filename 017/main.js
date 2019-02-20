@@ -54,18 +54,23 @@ let website;
 document.onkeypress = function(e){
     website = hash[e.key];
     if(website !== undefined){
-        location.href = "https://" + website;
-        //window.open();
+        website = "http://" + website;
+        window.open(website,"_blank");
     }
 }
 
 //按键
 let buttonKey = document.getElementsByTagName('button');
+let regExp = /^(?=^.{3,255}$)[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$/;
 for(let i=0; i<buttonKey.length; i++){
     buttonKey[i].onclick = function(e){
-        let url = prompt('Please give me a url.');
+        let ws = prompt('Please give me a website');
         let key = e.target.id;
-        hash[key] = url;
-        localStorage.setItem('nextHash',JSON.stringify(hash));
+        if(regExp.test(ws)){
+            hash[key] = ws;
+            localStorage.setItem('nextHash',JSON.stringify(hash));
+        }else if(ws !== null) {
+            alert("Error website name!");
+        }
     }
 }
