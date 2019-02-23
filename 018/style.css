@@ -40,6 +40,7 @@ kbd {
     width: 3.2em;
     height: 2.6em;
     text-transform: uppercase;
+    cursor: pointer;
     border: 1px solid #373737;
     border-radius: 6px;
     background: linear-gradient(to bottom, #292929 0%,#111111 100%);
@@ -48,6 +49,10 @@ kbd {
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+kbd:active {
+    transform: rotate(5deg);
 }
 
 kbd > span {
