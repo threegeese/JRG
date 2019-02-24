@@ -1,0 +1,10 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#canvas {
+    background: wheat;
+    height: 100vh;
+    position: relative;
+}

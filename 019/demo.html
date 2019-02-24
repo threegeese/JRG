@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #canvas {
+            background: wheat;
+            height: 100vh;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+    <script type="text/javascript">
+        
+        let canvasWrapper = document.getElementById("canvas");
+        let painting = false;
+
+        canvasWrapper.onmousedown = function(e){
+            painting = true;
+            let div = document.createElement("div");
+            let x = e.clientX,y = e.clientY;
+            div.style = "width:6px; height:6px; background:blue;" + 
+                        "border-radius:3px; position: absolute;" +
+                        "top:" + (y-3) + "px;" + "left:" + (x-3) + "px;";
+            canvasWrapper.appendChild(div);
+        }
+
+        canvasWrapper.onmousemove = function(e){
+            //console.log(e);
+            if(painting){
+                let div = document.createElement("div");
+                let x = e.clientX,y = e.clientY;
+                div.style = "width:6px; height:6px; background:blue;" + 
+                            "border-radius:3px; position: absolute;" +
+                            "top:" + (y-3) + "px;" + "left:" + (x-3) + "px;";
+                canvasWrapper.appendChild(div);
+            }
+        }
+
+        canvasWrapper.onmouseup = function(e){
+            //console.log(e);
+            console.log(1);
+
+            painting = false;
+        }
+
+    </script>
+</body>
+</html>
