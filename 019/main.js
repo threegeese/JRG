@@ -12,11 +12,7 @@ let usingEraser = false;
 let eraserButton = document.getElementById("eraser");
 
 eraserButton.onclick = function(){
-    if(eraserEnabled){
-        eraserEnabled = false;
-    }else{
-        eraserEnabled = true;
-    }
+    eraserEnabled = !eraserEnabled;
 }
 
 
@@ -37,7 +33,7 @@ window.onresize = function(){
 }
 
 /**
- * 监听用户动作，对应相应操作(画与擦)
+ * 监听用户鼠标动作，对应相应操作(画与擦)
  */
 canvas.onmousedown = function(e){
     let x,y;
@@ -100,7 +96,7 @@ function drawLine(x1,y1,x2,y2){
     ctx.closePath();
 }
 
-//擦除(x,y)点画迹,可指定擦除的范围大小(range)
+//擦除(x,y)点画迹
 function eraser(x,y){
-    ctx.clearRect(x,y,10,10);
+    ctx.clearRect(x-5,y-5,10,10);
 }
