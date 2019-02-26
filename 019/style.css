@@ -3,5 +3,11 @@ body {
 }
 
 #canvas {
-    background: whitesmoke;
+    background: #b2f5ff;
+}
+
+#eraser {
+    position: fixed;
+    left: 0;
+    top: 0;
 }
