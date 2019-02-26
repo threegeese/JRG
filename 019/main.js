@@ -5,18 +5,11 @@ let painting = false;
 let position = {'x': undefined, 'y': undefined};
 
 
-
+let eraserButton = document.getElementById("eraser");
+let actions = document.getElementById("actions");
+let brush = document.getElementById("brush");
 let eraserEnabled = false;
 let usingEraser = false;
-
-let eraserButton = document.getElementById("eraser");
-
-eraserButton.onclick = function(){
-    eraserEnabled = !eraserEnabled;
-}
-
-
-
 
 
 /**
@@ -73,8 +66,22 @@ canvas.onmouseup = function(e){
     }
 }
 
+/**
+ * 橡皮擦与画笔
+ */
+eraserButton.onclick = function(){
+    eraserEnabled = true;
+    actions.setAttribute("class","actions etb");
+}
 
-/**** 工具函数 ****/
+brush.onclick = function(){
+    eraserEnabled = false;
+    actions.setAttribute("class","actions");
+}
+
+
+
+/******** 工具函数 *********/
 
 
 //以(x,y)为圆心radius为半径画圆

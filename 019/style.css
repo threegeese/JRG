@@ -6,8 +6,21 @@ body {
     background: #b2f5ff;
 }
 
-#eraser {
+.actions {
     position: fixed;
     left: 0;
     top: 0;
+}
+
+.actions > #brush {
+    display: none;
+}
+
+/* 使用css管理状态(.etb,eraser to brush) */
+.actions.etb > #brush{
+    display: inline-block;
+}
+
+.actions.etb > #eraser{
+    display: none;
 }
