@@ -9,10 +9,21 @@
 <body>
     <canvas id="canvas" width="300px" height="300px"></canvas>
     <div id="actions" class="actions">
-        <button id="eraser">Eraser</button>
-        <button id="brush">Brush</button>
+        <svg id="brush" class="icon active" aria-hidden="true">
+            <use xlink:href="#icon-pencil"></use>
+        </svg>
+        <svg id="eraser" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-eraser"></use>
+        </svg>
+        <svg id="clear" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-clear"></use>
+        </svg>
+        <svg id="download" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-CloudDownload"></use>
+        </svg>
     </div>
         
     <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript"src="http://at.alicdn.com/t/font_1062333_ghwsgiosfo.js"></script>
 </body>
 </html>

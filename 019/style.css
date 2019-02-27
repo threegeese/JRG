@@ -1,5 +1,12 @@
 /*任务:使用link完成更换背景*/
 
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -15,15 +22,13 @@ body {
     top: 0;
 }
 
-.actions > #brush {
-    display: none;
+.actions > svg {
+    cursor: pointer;
+    fill: rgba(0,0,0,.5);
+    width: 1.8em;
+    height: 1.8em;
 }
 
-/* 使用css管理状态(.etb,eraser to brush) */
-.actions.etb > #brush{
-    display: inline-block;
-}
-
-.actions.etb > #eraser{
-    display: none;
+.actions > svg.active {
+    fill: black;
 }

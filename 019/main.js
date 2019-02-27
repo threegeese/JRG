@@ -5,11 +5,31 @@ let ctx = canvas.getContext("2d");
 let painting = false;
 let position = {'x': undefined, 'y': undefined};
 
-let eraserButton = document.getElementById("eraser");
 let actions = document.getElementById("actions");
+let eraserButton = document.getElementById("eraser");
 let brush = document.getElementById("brush");
+
 let eraserEnabled = false;
 let usingEraser = false;
+
+
+/**
+ * 启用橡皮擦或画笔
+ */
+eraserButton.onclick = function(){
+    eraserEnabled = true;
+    eraserButton.classList.add("active");
+    brush.classList.remove("active");
+}
+
+brush.onclick = function(){
+    eraserEnabled = false;
+    brush.classList.add("active");
+    eraserButton.classList.remove("active");
+}
+
+
+
 
 
 /**
@@ -102,18 +122,6 @@ if(document.body.ontouchstart === undefined){
 }
 
 
-/**
- * 启用橡皮擦或画笔
- */
-eraserButton.onclick = function(){
-    eraserEnabled = true;
-    actions.setAttribute("class","actions etb");
-}
-
-brush.onclick = function(){
-    eraserEnabled = false;
-    actions.setAttribute("class","actions");
-}
 
 
 /******** 工具函数 *********/
