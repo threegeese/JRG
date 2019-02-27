@@ -32,6 +32,10 @@ window.onresize = function(){
     canvas.height = pageHeight;
 }
 
+// document.body.ontouchstart = function(e){
+//     e.preventDefault();
+// }
+
 /**
  * 监听用户鼠标动作，对应相应操作(画与擦)
  * 
@@ -73,6 +77,7 @@ if(document.body.ontouchstart === undefined){
     }
 }else{
     canvas.ontouchstart = function(e){
+        e.preventDefault();
         let x,y;
         x = e.touches[0].clientX;
         y = e.touches[0].clientY;
