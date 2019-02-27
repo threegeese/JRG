@@ -9,6 +9,7 @@ let actions = document.getElementById("actions");
 let eraserButton = document.getElementById("eraser");
 let brush = document.getElementById("brush");
 let clear = document.getElementById("clear");
+let download =document.getElementById("download")
 
 let redBrush = document.getElementById("red");
 let yellowBrush = document.getElementById("yellow");
@@ -16,52 +17,6 @@ let greenBrush = document.getElementById("green");
 
 let eraserEnabled = false;
 let usingEraser = false;
-
-
-
-/**
- * 启用橡皮擦,画笔或清屏
- */
-eraserButton.onclick = function(){
-    eraserEnabled = true;
-    eraserButton.classList.add("active");
-    brush.classList.remove("active");
-}
-
-brush.onclick = function(){
-    eraserEnabled = false;
-    brush.classList.add("active");
-    eraserButton.classList.remove("active");
-}
-
-clear.onclick = function(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-}
-
-
-/**
- * 画笔颜色
- */
-redBrush.onclick = function(){
-    ctx.strokeStyle = "red";
-    redBrush.classList.add("active");
-    yellowBrush.classList.remove("active");
-    greenBrush.classList.remove("active");
-}
-
-yellowBrush.onclick = function(){
-    ctx.strokeStyle = "yellow";
-    yellowBrush.classList.add("active");
-    redBrush.classList.remove("active");
-    greenBrush.classList.remove("active");
-}
-
-greenBrush.onclick = function(){
-    ctx.strokeStyle = "green";
-    greenBrush.classList.add("active");
-    redBrush.classList.remove("active");
-    yellowBrush.classList.remove("active");
-}
 
 
 /**
@@ -153,6 +108,57 @@ if(document.body.ontouchstart === undefined){
     }   
 }
 
+
+/**
+ * 启用橡皮擦,画笔,清屏或下载
+ */
+eraserButton.onclick = function(){
+    eraserEnabled = true;
+    eraserButton.classList.add("active");
+    brush.classList.remove("active");
+}
+
+brush.onclick = function(){
+    eraserEnabled = false;
+    brush.classList.add("active");
+    eraserButton.classList.remove("active");
+}
+
+clear.onclick = function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+download.onclick = function(){
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = canvas.toDataURL("image/png");
+    a.download = "canvas";
+    a.click();
+}
+
+
+/**
+ * 画笔颜色
+ */
+redBrush.onclick = function(){
+    ctx.strokeStyle = "red";
+    redBrush.classList.add("active");
+    yellowBrush.classList.remove("active");
+    greenBrush.classList.remove("active");
+}
+
+yellowBrush.onclick = function(){
+    ctx.strokeStyle = "yellow";
+    yellowBrush.classList.add("active");
+    redBrush.classList.remove("active");
+    greenBrush.classList.remove("active");
+}
+
+greenBrush.onclick = function(){
+    ctx.strokeStyle = "green";
+    greenBrush.classList.add("active");
+    redBrush.classList.remove("active");
+    yellowBrush.classList.remove("active");
+}
 
 
 
