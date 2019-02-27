@@ -18,17 +18,21 @@ body {
 
 .actions {
     position: fixed;
+    padding: 15px;
     left: 0;
     top: 0;
 }
 
 .actions > svg {
+    width: 1.6em;
+    height: 1.6em;
+    margin: 0 6px;
     cursor: pointer;
     fill: rgba(0,0,0,.5);
-    width: 1.8em;
-    height: 1.8em;
+    transition: all 0.3s;
 }
 
 .actions > svg.active {
     fill: black;
+    transform: scale(1.2);
 }
