@@ -8,13 +8,19 @@ let position = {'x': undefined, 'y': undefined};
 let actions = document.getElementById("actions");
 let eraserButton = document.getElementById("eraser");
 let brush = document.getElementById("brush");
+let clear = document.getElementById("clear");
+
+let redBrush = document.getElementById("red");
+let yellowBrush = document.getElementById("yellow");
+let greenBrush = document.getElementById("green");
 
 let eraserEnabled = false;
 let usingEraser = false;
 
 
+
 /**
- * 启用橡皮擦或画笔
+ * 启用橡皮擦,画笔或清屏
  */
 eraserButton.onclick = function(){
     eraserEnabled = true;
@@ -28,8 +34,34 @@ brush.onclick = function(){
     eraserButton.classList.remove("active");
 }
 
+clear.onclick = function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+}
 
 
+/**
+ * 画笔颜色
+ */
+redBrush.onclick = function(){
+    ctx.strokeStyle = "red";
+    redBrush.classList.add("active");
+    yellowBrush.classList.remove("active");
+    greenBrush.classList.remove("active");
+}
+
+yellowBrush.onclick = function(){
+    ctx.strokeStyle = "yellow";
+    yellowBrush.classList.add("active");
+    redBrush.classList.remove("active");
+    greenBrush.classList.remove("active");
+}
+
+greenBrush.onclick = function(){
+    ctx.strokeStyle = "green";
+    greenBrush.classList.add("active");
+    redBrush.classList.remove("active");
+    yellowBrush.classList.remove("active");
+}
 
 
 /**
@@ -138,7 +170,6 @@ function drawCircle(x,y,radius){
 //从点(x1,y1)画到点(x2,y2)
 function drawLine(x1,y1,x2,y2){
     ctx.beginPath();
-    ctx.strokeStyle = "blue";
     ctx.lineWidth = 3;
     ctx.moveTo(x1,y1);
     ctx.lineTo(x2,y2);

@@ -1,19 +1,26 @@
 /*任务:使用link完成更换背景*/
 
-.icon {
-   width: 1em; height: 1em;
-   vertical-align: -0.15em;
-   fill: currentColor;
-   overflow: hidden;
-}
-
 body {
     margin: 0;
     overflow: hidden;
 }
 
+ol,ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 #canvas {
     background: #b2f5ff;
+}
+
+.icon {
+   width: 1em;
+   height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
 }
 
 .actions {
@@ -35,4 +42,35 @@ body {
 .actions > svg.active {
     fill: black;
     transform: scale(1.2);
+}
+
+.colors {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+}
+
+.colors > li {
+    width: 1.2em;
+    height: 1.2em;
+    margin: 8px 0;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.colors > li.active {
+    box-shadow: 3px 3px 3px rgba(0,0,0,.8);
+    transform: scale(1.2);
+}
+
+.colors > li.red {
+    background: red;
+}
+
+.colors > li.yellow {
+    background: yellow;
+}
+
+.colors > li {
+    background: green;
 }
