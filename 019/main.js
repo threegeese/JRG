@@ -1,9 +1,9 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
+//画笔与橡皮擦
 let painting = false;
 let position = {'x': undefined, 'y': undefined};
-
 
 let eraserButton = document.getElementById("eraser");
 let actions = document.getElementById("actions");
@@ -13,7 +13,7 @@ let usingEraser = false;
 
 
 /**
- * 设置canvas与页面同高
+ * 设置canvas与页面同宽高
  */
 let pageWidth = document.documentElement.clientWidth;
 let pageHeight = document.documentElement.clientHeight;
@@ -27,47 +27,83 @@ window.onresize = function(){
 
 /**
  * 监听用户鼠标动作，对应相应操作(画与擦)
+ * 
  */
-canvas.onmousedown = function(e){
-    let x,y;
-    x = e.clientX;
-    y = e.clientY;
-    position = {'x': x,'y': y};
-    painting = true;
-    if(eraserEnabled){
-        usingEraser = true;
-    }
-    if(usingEraser){
-        eraser(x,y);
-    }
-}
-
-canvas.onmousemove = function(e){
-    let x,y,nextPosition;
-    x = e.clientX;
-    y = e.clientY;
-    nextPosition = {'x': x, 'y': y};
-    if(!usingEraser){
-        if(painting){
-            //drawCircle(x,y,5)
-            drawLine(position.x,position.y,nextPosition.x,nextPosition.y);
-            position = nextPosition;
+if(document.body.ontouchstart === undefined){
+    canvas.onmousedown = function(e){
+        let x,y;
+        x = e.clientX;
+        y = e.clientY;
+        position = {'x': x,'y': y};
+        painting = true;
+        if(eraserEnabled){
+            usingEraser = true;
         }
-    }else{
-        eraser(x,y);
+        if(usingEraser){
+            eraser(x,y);
+        }
     }
-    
+    canvas.onmousemove = function(e){
+        let x,y,nextPosition;
+        x = e.clientX;
+        y = e.clientY;
+        nextPosition = {'x': x, 'y': y};
+        if(!usingEraser){
+            if(painting){
+                //drawCircle(x,y,5)
+                drawLine(position.x,position.y,nextPosition.x,nextPosition.y);
+                position = nextPosition;
+            }
+        }else{
+            eraser(x,y);
+        }
+    }
+    canvas.onmouseup = function(e){
+        painting = false;
+        if(eraserEnabled){
+            usingEraser = false;
+        }
+    }
+}else{
+    canvas.ontouchstart = function(e){
+        let x,y;
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+        position = {'x': x,'y': y};
+        painting = true;
+        if(eraserEnabled){
+            usingEraser = true;
+        }
+        if(usingEraser){
+            eraser(x,y);
+        }
+    }
+    canvas.ontouchmove = function(e){
+        let x,y,nextPosition;
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+        nextPosition = {'x': x, 'y': y};
+        if(!usingEraser){
+            if(painting){
+                //drawCircle(x,y,5)
+                drawLine(position.x,position.y,nextPosition.x,nextPosition.y);
+                position = nextPosition;
+            }
+        }else{
+            eraser(x,y);
+        }
+    }
+    canvas.ontouchend = function(e){
+        painting = false;
+        if(eraserEnabled){
+            usingEraser = false;
+        }
+    }   
 }
 
-canvas.onmouseup = function(e){
-    painting = false;
-    if(eraserEnabled){
-        usingEraser = false;
-    }
-}
 
 /**
- * 橡皮擦与画笔
+ * 启用橡皮擦或画笔
  */
 eraserButton.onclick = function(){
     eraserEnabled = true;
@@ -78,7 +114,6 @@ brush.onclick = function(){
     eraserEnabled = false;
     actions.setAttribute("class","actions");
 }
-
 
 
 /******** 工具函数 *********/
