@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <title>个人简历</title>
     <style>
-        @import "./loading.css";
+        @import "./loading.css";        
     </style>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou" rel="stylesheet">
     <script src="https://at.alicdn.com/t/font_1040415_yqsss7qxqc.js"></script>
 </head>
 <body>
-    <div id="siteLoading" class="site-loading">
+    <div id="siteLoading" class="site-loading active">
         <div class="loading"></div>
     </div>
-    <div class="topNavBar">
+    
+    <div id="topNavBar"class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a href="#" class="logo" alt="Logo">
                 <span class="rs">RS</span>
@@ -164,7 +165,7 @@
         </div>
     </section>
     <script>
-        siteLoading.classList.remove("active");        
+        setTimeout(function(){siteLoading.classList.remove("active")},1500);
     </script>
     <script src="./script.js"></script>
 </body>
