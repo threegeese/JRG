@@ -22,3 +22,20 @@ for(let i=0; i<litags.length; i++){
         e.currentTarget.classList.remove("active");
     }
 }
+
+let atags = document.querySelectorAll("nav > ul > li > a");
+for(let i=0; i<atags.length; i++){
+    console.log(atags[i]);
+    atags[i].onclick = function(e) {
+        e.preventDefault();
+        let a = e.currentTarget;
+        let href = a.getAttribute("href");
+        try {
+            let ele = document.querySelector(href);
+            let top = ele.offsetTop;
+            window.scrollTo(0,top - 80);
+        } catch (error) {
+            //console.log("#");
+        }
+    }
+}

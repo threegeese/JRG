@@ -117,6 +117,7 @@ hr {
 }
 .topNavBar .subMenu li {
     white-space: nowrap;
+    padding: 5px;
 }
 .topNavBar li.active .subMenu {
     display: block;
