@@ -23,10 +23,26 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#">关于</a></li>
+                    <li>
+                        <a href="#">关于</a>
+                    </li>
                     <li><a href="#">技能</a></li>
-                    <li><a href="#">作品</a></li>
-                    <li><a href="#">博客</a></li>
+                    <li>
+                        <a href="#">作品</a>
+                        <ul class="subMenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">博客</a>
+                        <ul class="subMenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
                     <li><a href="#">日历</a></li>
                     <li><a href="#">联系方式</a></li>
                     <li><a href="#">其它</a></li>
@@ -164,6 +180,7 @@
             </div>
         </div>
     </section>
+
     <script>
         setTimeout(function(){siteLoading.classList.remove("active")},1500);
     </script>
