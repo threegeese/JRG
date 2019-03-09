@@ -8,9 +8,19 @@ portfolio3.onclick = function() {
     portfolioBar.className = 'bar state-3'
 }
 
+let specialTags = document.querySelectorAll('[data-x]');
+for(let i =0;i<specialTags.length; i++){
+  specialTags[i].classList.add('offset');
+}
+
+setTimeout(findClosest(),800);
 window.onscroll = function(e){
     window.scrollY > 25 ? topNavBar.classList.add("sticky") : topNavBar.classList.remove("sticky");
+    findClosest();
+    
+}
 
+function findClosest() {
     let dataX = document.querySelectorAll("[data-x]");
     let min = 0;
     for(let i=1; i<dataX.length; i++){
@@ -20,11 +30,7 @@ window.onscroll = function(e){
             min = i;
         }
     }
-    for(let i=0; i<dataX.length; i++){
-        dataX[i].classList.remove("active");
-    }
-    dataX[min].classList.add("active");
-
+    dataX[min].classList.remove('offset');
     let ID = dataX[min].getAttribute("id");
     let aTag = document.querySelector('a[href="#' + ID + '"]');
     let li = aTag.parentNode;
@@ -35,15 +41,15 @@ window.onscroll = function(e){
     li.classList.add("highlight");
 }
 
-let liTags = document.querySelectorAll("nav > ul > li");
-// let liTags = document.getElementsByClassName("menuTigger");
-for(let i=0; i<liTags.length; i++){
-    liTags[i].onmouseenter = function(e) {
-       e.currentTarget.classList.add("active");
-    }
-    liTags[i].onmouseleave = function(e) {
-        e.currentTarget.classList.remove("active");
-    }
+    let liTags = document.querySelectorAll("nav > ul > li");
+    // let liTags = document.getElementsByClassName("menuTigger");
+    for(let i=0; i<liTags.length; i++){
+        liTags[i].onmouseenter = function(e) {
+            e.currentTarget.classList.add("active");
+        }
+        liTags[i].onmouseleave = function(e) {
+            e.currentTarget.classList.remove("active");
+        }
 }
 
 function animate(time) {
