@@ -10,15 +10,38 @@ portfolio3.onclick = function() {
 
 window.onscroll = function(e){
     window.scrollY > 25 ? topNavBar.classList.add("sticky") : topNavBar.classList.remove("sticky");
+
+    let dataX = document.querySelectorAll("[data-x]");
+    let min = 0;
+    for(let i=1; i<dataX.length; i++){
+        //如何判断window.scrollY离哪个元素最近?
+        //遍历元素，取出最近的即可
+        if(Math.abs(dataX[i].offsetTop - window.scrollY) < Math.abs(dataX[min].offsetTop - window.scrollY)){
+            min = i;
+        }
+    }
+    for(let i=0; i<dataX.length; i++){
+        dataX[i].classList.remove("active");
+    }
+    dataX[min].classList.add("active");
+
+    let ID = dataX[min].getAttribute("id");
+    let aTag = document.querySelector('a[href="#' + ID + '"]');
+    let li = aTag.parentNode;
+    let bro = li.parentNode.children;
+    for(let i=0; i<bro.length; i++){
+        bro[i].classList.remove("highlight");
+    }
+    li.classList.add("highlight");
 }
 
-let litags = document.querySelectorAll("nav > ul > li");
-// let litags = document.getElementsByClassName("menuTigger");
-for(let i=0; i<litags.length; i++){
-    litags[i].onmouseenter = function(e) {
+let liTags = document.querySelectorAll("nav > ul > li");
+// let liTags = document.getElementsByClassName("menuTigger");
+for(let i=0; i<liTags.length; i++){
+    liTags[i].onmouseenter = function(e) {
        e.currentTarget.classList.add("active");
     }
-    litags[i].onmouseleave = function(e) {
+    liTags[i].onmouseleave = function(e) {
         e.currentTarget.classList.remove("active");
     }
 }
@@ -29,9 +52,9 @@ function animate(time) {
 }
 requestAnimationFrame(animate);
 
-let atags = document.querySelectorAll("nav > ul > li > a");
-for(let i=0; i<atags.length; i++){
-    atags[i].onclick = function(e) {
+let aTags = document.querySelectorAll("nav > ul > li > a");
+for(let i=0; i<aTags.length; i++){
+    aTags[i].onclick = function(e) {
         e.preventDefault();
         let a = e.currentTarget;
         let href = a.getAttribute("href");

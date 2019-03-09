@@ -122,7 +122,8 @@ hr {
 .topNavBar li.active .subMenu {
     display: block;
 }
-.topNavBar nav > ul > li.active > a::after {
+.topNavBar nav > ul > li.active > a::after,
+.topNavBar nav > ul > li.highlight > a::after {
     content: '';
     display: block;
     width: 100%;
