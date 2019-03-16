@@ -91,7 +91,7 @@ Node.prototype.addClasses = function (classes) {
 
 
 /**
- *
+ * 第一版
  */
 let jQuery = function (nodeOrSelector) {
 
@@ -125,24 +125,40 @@ let jQuery = function (nodeOrSelector) {
 // console.log(node.getSilblings());
 // node.addClasses(['a','b','c']);
 
+
+
+/**
+ * 第二版
+ */
 let JQuery = function(nodeOrSelector) {
     let nodes = {};
     if(typeof nodeOrSelector === "string") {
         let temp = document.querySelectorAll(nodeOrSelector);
         for(let i=0; i<temp.length; i++){
-
+            nodes[i] = temp[i];
         }
-    }else if() {
-
+        nodes.length = temp.length;
+    }else if(nodeOrSelector instanceof Node) {
+        nodes = {
+            0: nodeOrSelector,
+            length: 1
+        }
     }
 
     nodes.getSilblings = function() {
-        
+
     }
 
-    nodes.addClasses = function() {
-
+    nodes.addClasses = function(classes) {
+        classes.forEach( value => {
+            for(let i=0; i<nodes.length; i++){
+                nodes[i].classList.add(value);
+            }
+        });
     }
 
     return nodes;
 }
+let n = JQuery("ul > li");
+console.log();
+n.addClasses(['a','b','c']);
