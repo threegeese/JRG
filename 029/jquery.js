@@ -62,6 +62,87 @@ hhdom.addClasses = function (node,classes) {
 
 
 /**
+ * 原型
+ */
+Node.prototype.getSilblings = function() {
+    let allChildren = this.parentElement.children;
+    let array = {
+        length: 0,
+    }
+    for(let i=0; i<allChildren.length; i++){
+        if(allChildren[i] !== this) {
+            array[array.length] = allChildren[i]; 
+            array.length  += 1;
+        }
+    }
+    return array;
+}
+
+/**
+ * classes形如["classA","classB","classC"]
+ */
+Node.prototype.addClasses = function (classes) {
+    classes.forEach( value => this.classList.add(value));
+}
+
+// console.log(item4.getSilblings.call(item4));
+// item4.addClasses.call(item4,['a','b','c','b']);
+
+
+
+/**
  *
  */
-Node.prototype.getSilblings = 
+let jQuery = function (nodeOrSelector) {
+
+    let node;
+    if(typeof nodeOrSelector === "string") {
+        node = document.querySelector(nodeOrSelector);
+    }else {
+        node = nodeOrSelector;
+    }
+
+    return {
+        getSilblings: function() {
+            let allChildren = node.parentElement.children;
+            let array = {
+                length: 0,
+            }
+            for(let i=0; i<allChildren.length; i++){
+                if(allChildren[i] !== node) {
+                    array[array.length] = allChildren[i]; 
+                    array.length  += 1;
+                }
+            }
+            return array;
+        },
+        addClasses: function (classes) {
+            classes.forEach( value => node.classList.add(value));
+        }
+    };
+}
+// let node = jQuery('#item5');
+// console.log(node.getSilblings());
+// node.addClasses(['a','b','c']);
+
+let JQuery = function(nodeOrSelector) {
+    let nodes = {};
+    if(typeof nodeOrSelector === "string") {
+        let temp = document.querySelectorAll(nodeOrSelector);
+        for(let i=0; i<temp.length; i++){
+
+        }
+    }else if() {
+
+    }
+
+    nodes.getSilblings = function() {
+        
+    }
+
+    nodes.addClasses = function() {
+
+    }
+
+    return nodes;
+}
