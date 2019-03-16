@@ -43,7 +43,7 @@ window.jQuery = function(nodeOrSelector) {
 
     // 合并后的文本方法
     nodes.text = function(text) {
-        if(text) {
+        if(text === undefined) {
             let texts = [];
             for(let i=0; i<nodes.length; i++){
                 texts[i] = nodes[i].textContent;
@@ -63,7 +63,10 @@ window.$ = jQuery
 
 
 
-/****** ******/
+/********* *********/
+
 $("ul > li").addClasses(['a','b','c']);
 console.log($("ul > li").getText());
 $("ul > li").setText("nihao");
+$("ul > li").text();
+$("ul > li").text("Hello");
