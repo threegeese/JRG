@@ -25,6 +25,13 @@ window.jQuery = function(nodeOrSelector) {
 
     }
 
+    // 删除类
+    nodes.removeClass= function(className){
+        for(let i=0;i<nodes.length;i++){
+            nodes[i].classList.remove(className);
+        }
+    }
+
     // 获取文本
     nodes.getText = function() {
         let texts = [];
