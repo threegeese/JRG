@@ -12,7 +12,7 @@ for(let i=0; i<buttons.length; i++){
             if(j !== i) {
                 buttons[j].style.color = "";
             }
-            e.currentTarget.style.color = "red";
+            e.currentTarget.style.color = "white";
         }
     }
 }
@@ -34,7 +34,7 @@ function player() {
             if(j !== i) {
                 buttons[j].style.color = "";
             }else {
-                buttons[j].style.color = "red";
+                buttons[j].style.color = "white";
             }
         }
         if(i === 5) {
@@ -44,12 +44,6 @@ function player() {
         }
     },1500)
 }
-
-
-
-
-
-
 
 
 /**
