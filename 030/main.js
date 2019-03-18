@@ -1,9 +1,8 @@
 /**
  * 原生js
  */
-let carousel = document.getElementById("carousel");
-let imgs = document.getElementsByTagName("img");
 let img = document.getElementsByClassName("imgs")[0];
+let imgs = document.getElementsByTagName("img");
 let buttons = document.getElementsByTagName("button");
 for(let i=0; i<buttons.length; i++){
     buttons[i].onclick = function(e) {
@@ -18,17 +17,16 @@ for(let i=0; i<buttons.length; i++){
     }
 }
 
-
 let timer = player();
-carousel.onmouseover = function() {
+img.onmouseover = function() {
     clearInterval(timer)
 }
-carousel.onmouseleave = function() {
+img.onmouseleave = function() {
     timer = player();
 }
 
+let i = 0;
 function player() {
-    let i = 0;
     return setInterval(() => {
         let px = -500 * i;
         img.style.left = px + "px";
