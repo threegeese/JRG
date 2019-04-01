@@ -26,48 +26,29 @@ body {
 }
 
 .window > .images > img {
-    transition: all .3s; 
     width: 100%;
-    
-}
-
-.window > .images > img:nth-child(1) {
+    transition: all .3s; 
     position: absolute;
     top: 0;
+}
+
+.window > .images > img.display {
     left: 0;
+    z-index: 1;
+    transform: translateX(0);
 }
 
-.window > .images > img:nth-child(2) {
-    position: absolute;
-    top: 0;
-    left: 100%;
+.window > .images > img.dequeue {
+    z-index: 1;
+    transform: translateX(-100%);
 }
 
-.window > .images > img:nth-child(3) {
-    position: absolute;
-    top: 0;
-    left: 100%;
-}
-
-.window > .images > img:nth-child(4) {
-    position: absolute;
-    top: 0;
-    left: 100%;
-}
-
-.window > .images > img:nth-child(5) {
-    position: absolute;
-    top: 0;
-    left: 100%;
-}
-
-.window > .images > img.right {
-    position: absolute;
-    top: 0;
-    left: 100%;
+.window > .images > img.queue {
+    transform: translateX(100%);
 }
 
 /*      */
+
 .switch {
     text-align: center;
 }
