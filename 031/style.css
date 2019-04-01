@@ -1,0 +1,42 @@
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.window {
+
+}
+
+.images {
+    width: 500px;
+    height: 300px;
+    margin: 20px auto 0 auto;
+    overflow: hidden;
+    display: flex;
+}
+
+.window > .switch {
+    text-align: center;
+}
+
+.window > .switch > svg {
+    width: 2.4em;
+    height: 2.4em;
+    fill: grey;
+}
+
+.window > .switch > svg:nth-child(1):hover {
+    fill: black;
+}
+
+.window > .switch > svg:nth-child(2):hover {
+    fill: black;
+}
