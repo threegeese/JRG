@@ -32,6 +32,7 @@ body {
     top: 0;
 }
 
+/* 调整transform属性可改变轮播样式  */
 .window > .images > img.display {
     left: 0;
     z-index: 1;
