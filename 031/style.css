@@ -16,7 +16,7 @@ body {
     height: 300px;
     margin: 20px auto 0 auto;
     overflow: hidden;
-
+    cursor: pointer;
 }
 
 /**/
@@ -57,6 +57,7 @@ body {
 .switch > svg {
     width: 2.4em;
     height: 2.4em;
+    cursor: pointer;
     fill: grey;
 }
 
