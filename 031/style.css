@@ -12,31 +12,74 @@ body {
 }
 
 .window {
-
-}
-
-.images {
     width: 500px;
     height: 300px;
     margin: 20px auto 0 auto;
     overflow: hidden;
-    display: flex;
+
 }
 
-.window > .switch {
+/**/
+
+.window > .images {
+    position: relative;
+}
+
+.window > .images > img {
+    transition: all .3s; 
+    width: 100%;
+    
+}
+
+.window > .images > img:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.window > .images > img:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+.window > .images > img:nth-child(3) {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+.window > .images > img:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+.window > .images > img:nth-child(5) {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+.window > .images > img.right {
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+
+/*      */
+.switch {
     text-align: center;
 }
 
-.window > .switch > svg {
+.switch > svg {
     width: 2.4em;
     height: 2.4em;
     fill: grey;
 }
 
-.window > .switch > svg:nth-child(1):hover {
+.switch > svg:hover {
     fill: black;
 }
 
-.window > .switch > svg:nth-child(2):hover {
-    fill: black;
-}
+
