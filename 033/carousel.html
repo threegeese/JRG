@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>无缝轮播</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .icon {
+            width: 2em;
+            height: 2em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        .window {
+            width: 500px;
+            height: 300px;
+            margin: 20px auto 0 auto;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .window > .images {
+            display: flex;
+            transition: all .3s; 
+        }
+        .window > .images > img {
+            width: 100%;
+        }
+        .window > .buttons {
+            position: absolute;
+            bottom: 2px;
+            right: 43%;
+        }
+        .window > .buttons > button {
+            border-radius: 50%;
+            border: none;
+            outline: none;
+            background: white;
+            cursor: pointer;
+        }
+        .window > .buttons > button:active {
+            font-weight: bold;
+        }
+        .switch {
+            text-align: center;
+        }
+        .switch > svg {
+            width: 2.4em;
+            height: 2.4em;
+            cursor: pointer;
+            fill: grey;
+        }
+        .switch > svg:hover {
+            fill: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <div class="images" id="slides">
+            <img src="../031/imgs/1.png" alt="img1" width=500 height=300>
+            <img src="../031/imgs/2.png" alt="img2" width=500 height=300>
+            <img src="../031/imgs/3.png" alt="img3" width=500 height=300>
+        </div>
+        <div class="buttons" id="btns">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+    </div>
+    <div class="switch">
+        <svg class="icon" aria-hidden="true" id="previous">
+            <use xlink:href="#icon-left"></use>
+        </svg>
+        <svg class="icon" aria-hidden="true" id="next">
+            <use xlink:href="#icon-right1"></use>
+        </svg>
+    </div>
+
+    <script type="text/javascript" src="../031/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://at.alicdn.com/t/font_1118683_yh7lok9wm9o.js"></script>
+    <script>
+        let $buttons = $("#btns > button");
+        let $slides = $("#slides");
+
+        let $imgs = $slides.children("img");
+        let copyFirstImg = $imgs.eq(0).clone(true);
+        let copyLastImg = $imgs.eq($imgs.length-1).clone(true);
+        // console.log(copyFirstImg[0].outerHTML);
+        $slides.append(copyFirstImg);
+        $slides.prepend(copyLastImg);
+
+        $slides.css({transform: "translateX(-500px)"});
+        $buttons.eq(0).on("click", () => {
+            $slides.css({transform: "translateX(-500px)"});
+        });
+        $buttons.eq(1).on("click", () => {
+            $slides.css({transform: "translateX(-1000px)"});
+        });
+        $buttons.eq(2).on("click", () => {
+            $slides.css({transform: "translateX(-1500px)"});
+        });
+    </script>
+</body>
+</html>
