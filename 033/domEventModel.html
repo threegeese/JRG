@@ -57,22 +57,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script>
         
-        btn.addEventListener('click',(e) => {
-            popover.style.display = 'block';
-        });
+        // btn.addEventListener('click',(e) => {
+        //     popover.style.display = 'block';
+        // });
         
-        wrapper.addEventListener('click',(e) => {
-            e.stopPropagation();    //阻止捕获和冒泡阶段中当前事件的进一步传播
-        })
+        // wrapper.addEventListener('click',(e) => {
+        //     e.stopPropagation();    //阻止捕获和冒泡阶段中当前事件的进一步传播
+        // })
         
-        document.documentElement.addEventListener('click',(e) => {
-            //监听 body 试试
-            popover.style.display = 'none';
+        // document.documentElement.addEventListener('click',(e) => {
+        //     //监听 body 试试
+        //     popover.style.display = 'none';
             
-        });
+        // });
         
         // 使用 jQuery 优化
-        
+        $(btn).on('click', (e) => {
+            $(popover).show();
+            $(document).on('click', () => {
+                $(popover).hide();
+            });
+        });
+
+        $(wrapper).on('click', false);  //这里 false 相当于stopPropagation、preventDefault
+
         
         </script>
 </body>
