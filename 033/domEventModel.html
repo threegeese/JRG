@@ -41,6 +41,50 @@
             top: 5px;
         }
 
+        /* another one */
+        [color]{
+            border: 1px solid black;
+            box-sizing: border-box;
+            padding: 18px;
+            border-radius: 50%;
+            display: flex;
+            flex: 1;
+            transition: all 1s;
+        }
+
+        [color="red"] {
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+        }
+
+        [color="red"].active {
+            background-color: red;
+        }
+
+        [color="orange"].active {
+            background-color: orange;
+        }
+
+        [color="yellow"].active {
+            background-color: yellow;
+        }
+
+        [color="green"].active {
+            background-color: green;
+        }
+
+        [color="cyan"].active {
+            background-color: cyan;
+        }
+
+        [color="blue"].active {
+            background-color: blue;
+        }
+
+        [color="purple"].active {
+            background-color: purple;
+        }
 
     </style>
 </head>
@@ -50,8 +94,19 @@
         <div class="popover" id="popover">浮层</div>
     </div>
     
-    <div class="xxx">
-        
+    <div color="red">
+        <div color="orange">
+            <div color="yellow">
+                <div color="green">
+                    <div color="cyan">
+                        <div color="blue">
+                            <div color="purple">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -74,12 +129,23 @@
         // 使用 jQuery 优化
         $(btn).on('click', (e) => {
             $(popover).show();
-            $(document).on('click', () => {
+            $(document).on('click', () => {     //添加延时试试
                 $(popover).hide();
             });
         });
 
         $(wrapper).on('click', false);  //这里 false 相当于stopPropagation、preventDefault
+
+        /* -------------------------- */
+
+        let n = 0;
+        $('[color]').on('click', (e) => {
+            setTimeout(() => {
+                $(e.currentTarget).addClass('active');
+                // console.log(e.currentTarget.outerHTML)
+            },n * 500);
+            n += 0.5;
+        });
 
         
         </script>
