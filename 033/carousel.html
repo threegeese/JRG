@@ -86,24 +86,63 @@
     <script>
         let $buttons = $("#btns > button");
         let $slides = $("#slides");
+        let count = 0;
 
-        let $imgs = $slides.children("img");
-        let copyFirstImg = $imgs.eq(0).clone(true);
-        let copyLastImg = $imgs.eq($imgs.length-1).clone(true);
-        // console.log(copyFirstImg[0].outerHTML);
-        $slides.append(copyFirstImg);
-        $slides.prepend(copyLastImg);
-
+        makeImgs();
         $slides.css({transform: "translateX(-500px)"});
-        $buttons.eq(0).on("click", () => {
-            $slides.css({transform: "translateX(-500px)"});
-        });
-        $buttons.eq(1).on("click", () => {
-            $slides.css({transform: "translateX(-1000px)"});
-        });
-        $buttons.eq(2).on("click", () => {
-            $slides.css({transform: "translateX(-1500px)"});
-        });
+        bindEvents();
+
+
+        function makeImgs() {
+            let $imgs = $slides.children("img");
+            let copyFirstImg = $imgs.eq(0).clone(true);
+            let copyLastImg = $imgs.eq($imgs.length-1).clone(true);
+            // console.log(copyFirstImg[0].outerHTML);
+            $slides.append(copyFirstImg);
+            $slides.prepend(copyLastImg);
+        }
+
+        function bindEvents() {
+
+            // $("#btns").on("click", "button", (e) => {
+            //     let $btn = $(e.currentTarget);
+            //     let index = $btn.index();
+            //     if(current === 0 && index === ) {   //first -> last
+
+            //     } else if() {   //  last -> first
+
+            //     } else {
+            //         $slides.css({transform: `translateX(${-(index + 1) * 500}px)`});
+            //     }
+            // });
+
+            $buttons.eq(0).on("click", () => {
+                if(count === 2) {
+                    $slides.css({transform: "translateX(-2000px)"}).one("transitionend", () => {
+                        $slides.hide().offset();
+                        $slides.css({transform: "translateX(-500px)"}).show();
+                    });
+                } else {
+                    $slides.css({transform: "translateX(-500px)"});
+                }
+                count = 0;
+            });
+            $buttons.eq(1).on("click", () => {
+                $slides.css({transform: "translateX(-1000px)"});
+                count = 1;
+            });
+            $buttons.eq(2).on("click", () => {
+                if(count === 0) {
+                    $slides.css({transform: "translateX(0px)"}).one("transitionend", () => {
+                        $slides.hide().offset();
+                        $slides.css({transform: "translateX(-1500px)"}).show();
+                    });
+                } else {
+                    $slides.css({transform: "translateX(-1500px)"});
+                }
+                count = 2;
+            });
+        }
     </script>
 </body>
 </html>
