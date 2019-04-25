@@ -91,8 +91,31 @@
         makeImgs();
         $slides.css({transform: "translateX(-500px)"});
         bindEvents();
-
         
+        carousel();
+        
+        function carousel() {
+            let time = setInterval(() => {
+                changeSlide(current + 1);
+            },2000);
+            $(".window").on("mouseenter",() => {
+                clearInterval(time);
+            });
+            $(".window").on("mouseleave",() => {
+                time = setInterval(() => {
+                    changeSlide(current + 1);
+                },2000);
+            });
+            document.addEventListener("visibilitychange", () => {
+                if(document.hidden) {
+                    clearInterval(time);
+                } else {
+                    time = setInterval(() => {
+                        changeSlide(current + 1);
+                    },2000);
+                }
+            });
+        }
 
         function makeImgs() {
             let $imgs = $slides.children("img");
