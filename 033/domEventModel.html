@@ -128,13 +128,20 @@
         
         // 使用 jQuery 优化
         $(btn).on('click', (e) => {
-            $(popover).show();
-            $(document).on('click', () => {     //添加延时试试
+            //console.log(popover.style.display)
+            if(popover.style.display === '' || popover.style.display === "none") {
+                $(popover).show();
+            } else {
+                $(popover).hide();
+            }
+            $(document).one('click', () => {     //添加延时试试
                 $(popover).hide();
             });
         });
 
         $(wrapper).on('click', false);  //这里 false 相当于stopPropagation、preventDefault
+
+
 
         /* -------------------------- */
 
