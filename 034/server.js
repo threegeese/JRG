@@ -20,24 +20,12 @@ var method = request.method
 /******** 从这里开始看，上面不要看 ************/
 
 console.log('HTTP 路径为\n' + path)
-if(path == '/style.css'){
-    response.setHeader('Content-Type', 'text/css; charset=utf-8')
-    response.write('body{background-color: #ddd;}h1{color: red;}')
-    response.end()
-}else if(path == '/script.js'){
-    response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
-    response.write('alert("这是JS执行的")')
-    response.end()
-}else if(path == '/'){
+if(path === '/') {
+    var string = fs.readFileSync("./index.html","utf8");
     response.setHeader('Content-Type', 'text/html; charset=utf-8')
-    response.write('<!DOCTYPE>\n<html>'  + 
-        '<head><link rel="stylesheet" href="/style.css">' +
-        '</head><body>'  +
-        '<h1>你好</h1>' +
-        '<script src="/script.js"></script>' +
-        '</body></html>')
-    response.end()
-}else{
+    response.write(string);
+    response.end();
+} else {
     response.statusCode = 404
     response.end()
 }
@@ -46,4 +34,4 @@ if(path == '/style.css'){
 })
 
 server.listen(port)
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
+console.log('监听 ' + port + ' 成功\n请尝试打开 http://localhost:' + port)
