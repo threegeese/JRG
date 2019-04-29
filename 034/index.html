@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <title>JSONP</title>
     <style>
-        div { width: 400px; font-size: 1.4em; border: 2px dotted slategray; margin: 0 auto; }
+        div { width: 350px; font-size: 1.4em; border: 2px dotted slategray; margin: 30px auto; }
         p { text-align: center; } button { display: block; margin: 8px auto; }
     </style>
 </head>
 <body>
     <div>
-        <p>You have ￥:<b>$$$amount$$$</b></p>
-        <button id="btn">pay it</button>
+        <p>You have <b id="amount">$$$amount$$$</b> ￥</p>
+        <button id="btn">Take my money</button>
     </div>
 
     <script>
-        
+        btn.addEventListener("click", () => {
+            // amount.innerHTML = parseInt(amount.innerHTML,10) - 1;
+            let script = document.createElement("script");
+            script.src = "/pay";
+            document.body.appendChild(script);
+        });
     </script>
 </body>
 </html>

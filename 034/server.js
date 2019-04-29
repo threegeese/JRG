@@ -22,10 +22,16 @@ var method = request.method
 console.log('HTTP 路径为\n' + path)
 if(path === '/') {
     var string = fs.readFileSync("./index.html","utf8");
+    var amount = fs.readFileSync("./db","utf8");
+    string = string.replace("$$$amount$$$",amount);
     response.setHeader('Content-Type', 'text/html; charset=utf-8')
     response.write(string);
     response.end();
-} else {
+} else if(path === '/pay') {
+    response.setHeader("Content-Type","application/javascript; charset=utf-8");
+    response.write("console.log(1)");
+    response.end();
+}else {
     response.statusCode = 404
     response.end()
 }
