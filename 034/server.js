@@ -28,8 +28,13 @@ if(path === '/') {
     response.write(string);
     response.end();
 } else if(path === '/pay') {
+    var amount = fs.readFileSync("./db","utf8");
+    fs.writeFileSync("./db", amount - 1);
     response.setHeader("Content-Type","application/javascript; charset=utf-8");
-    response.write("console.log(1)");
+    response.write(`
+        //amount.innerText = amount.innerText - 1;
+        ${query.callback}.call(undefined,"success");
+    `);
     response.end();
 }else {
     response.statusCode = 404

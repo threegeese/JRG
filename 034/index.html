@@ -15,11 +15,25 @@
     </div>
 
     <script>
+        window.jsonp = function(result) {
+            if(result === "success") {
+                amount.innerText = amount.innerText - 1;
+            } else {
+
+            }
+        }
         btn.addEventListener("click", () => {
             // amount.innerHTML = parseInt(amount.innerHTML,10) - 1;
             let script = document.createElement("script");
-            script.src = "/pay";
+            script.src = "/pay?callback=jsonp";
             document.body.appendChild(script);
+            script.onload = function(e) {
+                e.currentTarget.remove();
+            }
+            script.onerror = function(e) {
+                alert("Error!");
+                e.currentTarget.remove();
+            }
         });
     </script>
 </body>
