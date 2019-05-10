@@ -96,7 +96,6 @@ btn.click = ()=> {
 
 
 
-
 /**
  * Second Version
  */
@@ -108,6 +107,9 @@ jQuery.ajax = function(options) {
     let failFn = options.failFn;
     const xhr = new XMLHttpRequest();
     xhr.open(method,url);
+    for (let key in headers) {
+        xhr.setRequestHeader(key,header[key]);
+    }
     xhr.onreadystatechange = ()=> {
         if(xhr.readyState === 4) {
             if(xhr.status >= 200 && xhr < 300) {
@@ -121,9 +123,33 @@ jQuery.ajax = function(options) {
 }
 
 //
-btn.click = () {
+btn.click = ()=> {
     jQuery.ajax({
         url: 'xxx',
-        me
+        method: 'get',
+        headers: {'Content-Type': 'x-www-form-urlencoded'}
     });
+}
+
+
+
+/**
+ * Third Version
+ */
+jQuery.ajax = function({url, method, body, headers, successFn, failFn}) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method,url);
+    for (let key in headers) {
+        xhr.setRequestHeader(key,header[key]);
+    }
+    xhr.onreadystatechange = ()=> {
+        if(xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr < 300) {
+                successFn.call(undefined,xhr.responseText)
+            }else if(xhr.status >= 400) {
+                failFn.call(undefined,xhr);
+            }
+        }
+    }
+    xhr.send(body)
 }
