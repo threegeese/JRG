@@ -67,12 +67,63 @@ window.jQuery = function(nodeOrSelector) {
 
 window.$ = jQuery
 
+/**
+ * 封装 AJAX
+ * First Version
+ */
+jQuery.ajax = function(url, method, body, headers, successFn, failFn) {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method,url);
+    for (let key in headers) {
+        xhr.setRequestHeader(key,header[key]);
+    }
+    xhr.onreadystatechange = ()=> {
+        if(xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr < 300) {
+                successFn.call(undefined,xhr.responseText)
+            }else if(xhr.status >= 400) {
+                failFn.call(undefined,xhr);
+            }
+        }
+    }
+    xhr.send(body)
+}
+
+// 省略传参可能出错
+btn.click = ()=> {
+    jQuery.ajax('xxx', 'get', 'a=1', {'Content-Type': 'x-www-form-urlencoded'});
+}
 
 
-/********* *********/
 
-$("ul > li").addClasses(['a','b','c']);
-console.log($("ul > li").getText());
-$("ul > li").setText("nihao");
-$("ul > li").text();
-$("ul > li").text("Hello");
+
+/**
+ * Second Version
+ */
+jQuery.ajax = function(options) {
+    let url = options.url;
+    let method = options.method;
+    let body = options.body;
+    let successFn = options.successFn;
+    let failFn = options.failFn;
+    const xhr = new XMLHttpRequest();
+    xhr.open(method,url);
+    xhr.onreadystatechange = ()=> {
+        if(xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr < 300) {
+                successFn.call(undefined,xhr.responseText)
+            }else if(xhr.status >= 400) {
+                failFn.call(undefined,xhr);
+            }
+        }
+    }
+    xhr.send(body)
+}
+
+//
+btn.click = () {
+    jQuery.ajax({
+        url: 'xxx',
+        me
+    });
+}
