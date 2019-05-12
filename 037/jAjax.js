@@ -136,7 +136,7 @@ btn.click = ()=> {
 /**
  * Third Version
  */
-jQuery.ajax = function({url, method, body, headers, successFn, failFn}) {
+jQuery.ajax = function({url, method, body, headers, successFn, failFn}) {   // 解构赋值
     const xhr = new XMLHttpRequest();
     xhr.open(method,url);
     for (let key in headers) {
@@ -151,5 +151,29 @@ jQuery.ajax = function({url, method, body, headers, successFn, failFn}) {
             }
         }
     }
-    xhr.send(body)
+    xhr.send(body);
+}
+
+
+/**
+ * Promise
+ */
+jQuery.ajax = function({url, method, body, headers}) {
+    return new Promise(function(resolve, reject) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(method,url);
+        for (let key in headers) {
+            xhr.setRequestHeader(key,header[key]);
+        }
+        xhr.onreadystatechange = ()=> {
+            if(xhr.readyState === 4) {
+                if(xhr.status >= 200 && xhr < 300) {
+                    resolve.call(undefined,xhr.responseText)
+                }else if(xhr.status >= 400) {
+                    reject.call(undefined,xhr);
+                }
+            }
+        }
+        xhr.send(body);
+    });
 }
