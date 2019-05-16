@@ -124,16 +124,17 @@ AV.init({
   appKey: APP_KEY
 });
 
-
 // 留言
 let msgForm = document.querySelector("#postMsgForm");
 msgForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    let name = msgForm.querySelector('input[name=name]').value;
     let content = msgForm.querySelector('input[name=content]').value;
     var Message = AV.Object.extend('Message');
     var msg = new Message();
     msg.save({
-      'content': content
+        'name': name,
+        'content': content
     }).then(function(object) {
       //alert('LeanCloud Rocks!');
       window.location.reload();
@@ -150,7 +151,7 @@ query.find().then(function(msg) {
     console.log(arr);
     arr.forEach((item) => {
         let li = document.createElement("li");
-        li.innerText = item.content;
+        li.innerText = `${item.name} : ${item.content}`;
         msgList.appendChild(li);
     });
 });
