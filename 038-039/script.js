@@ -122,48 +122,132 @@ var mySwiper = new Swiper ('.swiper-container', {
 
 
 // 初始化
-var APP_ID = 'iw2yCnCeNTAoI2OaeH9U9Cjh-gzGzoHsz';
-var APP_KEY = 'Fu7xLh11SSKTzoC2etW3CzpV';
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
+// var APP_ID = 'iw2yCnCeNTAoI2OaeH9U9Cjh-gzGzoHsz';
+// var APP_KEY = 'Fu7xLh11SSKTzoC2etW3CzpV';
+// AV.init({
+//   appId: APP_ID,
+//   appKey: APP_KEY
+// });
 
-// 获取留言并展示
-let msgList = document.querySelector("#showMsg");
-var query = new AV.Query('Message');
-query.find().then(function(msg) {
-    //console.log(msg)
-    let arr = msg.map((item) => item.attributes);
-    //console.log(arr);
-    arr.forEach((item) => {
-        let li = document.createElement("li");
-        li.innerText = `${item.name}: ${item.content}`;
-        msgList.appendChild(li);
-    });
-});
+// // 获取留言并展示
+// let msgList = document.querySelector("#showMsg");
+// var query = new AV.Query('Message');
+// query.find().then(function(msg) {
+//     //console.log(msg)
+//     let arr = msg.map((item) => item.attributes);
+//     //console.log(arr);
+//     arr.forEach((item) => {
+//         let li = document.createElement("li");
+//         li.innerText = `${item.name}: ${item.content}`;
+//         msgList.appendChild(li);
+//     });
+// });
 
-// 留言
-let msgForm = document.querySelector("#postMsgForm");
-msgForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let name = msgForm.querySelector('input[name=name]').value;
-    let content = msgForm.querySelector('input[name=content]').value;
-    var Message = AV.Object.extend('Message');
-    var msg = new Message();
-    msg.save({
-        'name': name,
-        'content': content
-    }).then(function(object) {
-        let li = document.createElement("li");
-        li.innerText = `${object.attributes.name}: ${object.attributes.content}`;
-        msgList.appendChild(li);
-        msgForm.querySelector("input[name=content]").value = '';
-    })
-});
+// // 留言
+// let msgForm = document.querySelector("#postMsgForm");
+// msgForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     let name = msgForm.querySelector('input[name=name]').value;
+//     let content = msgForm.querySelector('input[name=content]').value;
+//     var Message = AV.Object.extend('Message');
+//     var msg = new Message();
+//     msg.save({
+//         'name': name,
+//         'content': content
+//     }).then(function(object) {
+//         let li = document.createElement("li");
+//         li.innerText = `${object.attributes.name}: ${object.attributes.content}`;
+//         msgList.appendChild(li);
+//         msgForm.querySelector("input[name=content]").value = '';
+//     })
+// });
 
 
 
 /**
  * MVC
  */
+!function() {
+
+    var view = document.querySelector("section.messageBoard");
+
+    var model = {
+
+        init: function() {
+            var APP_ID = 'iw2yCnCeNTAoI2OaeH9U9Cjh-gzGzoHsz';
+            var APP_KEY = 'Fu7xLh11SSKTzoC2etW3CzpV';
+            AV.init({ appId: APP_ID, appKey: APP_KEY });
+        },
+
+        // 获取数据
+        fetch: function() {
+            var query = new AV.Query('Message');
+            return query.find();    // 返回 Promise 对象
+        },
+
+        // 保存数据
+        save: function(name, content) {
+            var Message = AV.Object.extend('Message');
+            var msg = new Message();
+            return msg.save({   // 返回 Promise 对象
+                'name': name,
+                'content': content
+            });
+        }
+
+    }
+
+    var controller = {
+
+        view: null,
+        msgList: null,
+        form: null,
+        model: null,
+
+
+        init: function(view, model) {
+            this.view = view;
+            this.model = model;
+            this.msgForm = view.querySelector("#postMsgForm");
+            this.msgList = view.querySelector("#showMsg");
+            this.model.init();
+            this.loadMsg();
+            this.bindEvents();
+        },
+
+        loadMsg: function() {
+            this.model.fetch().then((msg) => {
+                //console.log(msg)
+                let arr = msg.map((item) => item.attributes);
+                //console.log(arr);
+                arr.forEach((item) => {
+                    let li = document.createElement("li");
+                    li.innerText = `${item.name}: ${item.content}`;
+                    this.msgList.appendChild(li);
+                });
+            });
+        },
+
+        bindEvents: function() {
+            this.msgForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                this.saveMsg();
+            });
+        },
+
+        saveMsg: function() {
+            let name = this.msgForm.querySelector('input[name=name]').value;
+            let content = this.msgForm.querySelector('input[name=content]').value;
+            this.model.save(name, content).then((object) => {
+                let li = document.createElement("li");
+                li.innerText = `${object.attributes.name}: ${object.attributes.content}`;
+                this.msgList.appendChild(li);
+                this.msgForm.querySelector("input[name=content]").value = '';
+            });
+        }
+
+    };
+
+    controller.init(view, model);
+
+}.call();
