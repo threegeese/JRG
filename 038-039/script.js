@@ -112,9 +112,14 @@ var mySwiper = new Swiper ('.swiper-container', {
     }
 });
 
+
+
+
+
 /**
  * leancould
  */
+
 
 // 初始化
 var APP_ID = 'iw2yCnCeNTAoI2OaeH9U9Cjh-gzGzoHsz';
@@ -122,6 +127,20 @@ var APP_KEY = 'Fu7xLh11SSKTzoC2etW3CzpV';
 AV.init({
   appId: APP_ID,
   appKey: APP_KEY
+});
+
+// 获取留言并展示
+let msgList = document.querySelector("#showMsg");
+var query = new AV.Query('Message');
+query.find().then(function(msg) {
+    //console.log(msg)
+    let arr = msg.map((item) => item.attributes);
+    //console.log(arr);
+    arr.forEach((item) => {
+        let li = document.createElement("li");
+        li.innerText = `${item.name}: ${item.content}`;
+        msgList.appendChild(li);
+    });
 });
 
 // 留言
@@ -136,23 +155,15 @@ msgForm.addEventListener("submit", (e) => {
         'name': name,
         'content': content
     }).then(function(object) {
-      //alert('LeanCloud Rocks!');
-      window.location.reload();
-      console.log('LeanCloud Rocks!')
+        let li = document.createElement("li");
+        li.innerText = `${object.attributes.name}: ${object.attributes.content}`;
+        msgList.appendChild(li);
+        msgForm.querySelector("input[name=content]").value = '';
     })
 });
 
-// 获取留言并展示
-let msgList = document.querySelector("#showMsg");
-var query = new AV.Query('Message');
-query.find().then(function(msg) {
-    console.log(msg)
-    let arr = msg.map((item) => item.attributes);
-    console.log(arr);
-    arr.forEach((item) => {
-        let li = document.createElement("li");
-        li.innerText = `${item.name} : ${item.content}`;
-        msgList.appendChild(li);
-    });
-});
 
+
+/**
+ * MVC
+ */
