@@ -12,6 +12,7 @@
     <script src="https://at.alicdn.com/t/font_1040415_yqsss7qxqc.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.13.1/dist/av-min.js"></script>
 </head>
 <body>
     <div id="siteLoading" class="site-loading active">
@@ -197,6 +198,16 @@
                 <img src="./imgs/3.jpg" alt="">
             </div>
         </div> -->
+    </section>
+
+    <section class="messageBoard">
+        <h2>留言</h2>
+        <ul id="showMsg"></ul>
+        <form id="postMsgForm">
+            <input type="text" name="name" placeholder="名字" required maxlength=12>
+            <input type="text" name="content" placeholder="说点什么..." required maxlength=50>
+            <input type="submit" value="留言">
+        </form>
     </section>
 
     <script>

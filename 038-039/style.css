@@ -235,5 +235,51 @@ section.portfolio .swiper-container {
     height: 501px;
 }
 
+
+section.messageBoard {
+    max-width: 940px;
+    margin: 80px auto;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px; */
+}
+section.messageBoard h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+section.messageBoard ul {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    border-top: 1px solid #ddd;
+}
+section.messageBoard ul > li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+section.messageBoard form { text-align: center; }
+section.messageBoard input {
+    background: none;
+    display: inline-block;
+    text-align: center;
+    border: 2px solid grey;
+    border-radius: 4px;
+    padding: 10px 10px;
+    width: 240px;
+    outline: none;
+}
+section.messageBoard input[type=submit] {
+    width: 60px;
+    padding: 9px 10px;
+    background-color: #dedede
+}
+
+
 [data-x].offset{ transform: translateY(100px); }
 [data-x]{ transform: translateY(0); transition: all 0.5s; }

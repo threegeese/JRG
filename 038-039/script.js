@@ -111,3 +111,47 @@ var mySwiper = new Swiper ('.swiper-container', {
         prevEl: '.swiper-button-prev',
     }
 });
+
+/**
+ * leancould
+ */
+
+// 初始化
+var APP_ID = 'iw2yCnCeNTAoI2OaeH9U9Cjh-gzGzoHsz';
+var APP_KEY = 'Fu7xLh11SSKTzoC2etW3CzpV';
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+
+
+// 留言
+let msgForm = document.querySelector("#postMsgForm");
+msgForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let content = msgForm.querySelector('input[name=content]').value;
+    var Message = AV.Object.extend('Message');
+    var msg = new Message();
+    msg.save({
+      'content': content
+    }).then(function(object) {
+      //alert('LeanCloud Rocks!');
+      window.location.reload();
+      console.log('LeanCloud Rocks!')
+    })
+});
+
+// 获取留言并展示
+let msgList = document.querySelector("#showMsg");
+var query = new AV.Query('Message');
+query.find().then(function(msg) {
+    console.log(msg)
+    let arr = msg.map((item) => item.attributes);
+    console.log(arr);
+    arr.forEach((item) => {
+        let li = document.createElement("li");
+        li.innerText = item.content;
+        msgList.appendChild(li);
+    });
+});
+
