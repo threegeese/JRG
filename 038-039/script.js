@@ -204,7 +204,6 @@ var mySwiper = new Swiper ('.swiper-container', {
         form: null,
         model: null,
 
-
         init: function(view, model) {
             this.view = view;
             this.model = model;
