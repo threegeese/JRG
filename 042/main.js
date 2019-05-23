@@ -1,7 +1,7 @@
 const PROLOGUE = `/**
  * 面试官你好，我是 Brad Pitt
  * 只用文字作做我介绍太单调了
- * 我就用代码来做介绍
+ * 我就用代码来做介绍吧
  * 首先给页面添加一些样式
  */
 
@@ -152,7 +152,7 @@ function writeCode(prefix, code, fn) {
         prompt.innerHTML = Prism.highlight(prefix + code.substring(0, n), Prism.languages.css);
         prompt.scrollTop = prompt.scrollHeight;
         addStyle.innerHTML = prefix + code.substring(0, n);
-    }, 10);
+    }, 100);
 
 }
 
@@ -176,7 +176,7 @@ function writeMarkdown(markdown, fn) {
         n += 1;
         board.innerHTML = markdown.substring(0, n);
         board.scrollTop = board.scrollHeight;
-    }, 10);
+    }, 100);
 
 }
 
