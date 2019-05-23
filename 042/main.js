@@ -39,7 +39,6 @@ html {
 /* 嗯~ o(*￣▽￣*)o，我需要一个白板 &#128466; */
 `;
 
-
 let n = 0;
 let prompt = document.getElementById("prompt");
 let addStyle = document.getElementById("addStyle");
