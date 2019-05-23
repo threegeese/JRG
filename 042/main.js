@@ -7,14 +7,23 @@ const prologue = `/**
 
 * {
     transition: all 1s;
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
 }
 html {
     background: rgb(222,222,222);
 }
+main {
+    position: relative;
+}
 #prompt {
     border: 1px solid #aaa;
     margin: 8px;
-    padding: 10px;
+    padding: 12px;
+    overflow: auto;
 }
 
 /* 让代码高亮起来吧 */
@@ -52,21 +61,33 @@ let timer = setInterval(() => {
     n += 1;
     prompt.innerHTML = prologue.substring(0, n);
     prompt.innerHTML = Prism.highlight(prompt.innerHTML, Prism.languages.css);
+    prompt.scrollTop = prompt.scrollHeight;
     addStyle.innerHTML = prologue.substring(0, n);
 }, 10);
 
 function addBoard() {
-    let board = document.createElement("div");
+    let board = document.createElement("pre");
     board.setAttribute("id","board");
     document.getElementsByTagName("main")[0].appendChild(board);
 }
 
 function showBoard(prePrompt) {
 
-    const intro = `#board {
-    width: 100px;
-    height: 100px;
-    background: red;
+    const intro = `#prompt {
+    width: 48vw;
+    height: 96vh;
+    position: absolute;
+    left: 0;
+}
+#board {
+    width: 48vw;
+    height: 96vh;
+    margin: 8px;
+    padding: 12px;
+    background: white;
+    border: 12px solid black;
+    position: absolute;
+    right: 0;
 }`;
 
     let n = 0;
@@ -78,7 +99,9 @@ function showBoard(prePrompt) {
         n += 1;
         prompt.innerHTML = prologue + intro.substring(0, n);
         prompt.innerHTML = Prism.highlight(prompt.innerHTML, Prism.languages.css);
+        prompt.scrollTop = prompt.scrollHeight;
         addStyle.innerHTML = prologue + intro.substring(0, n);
     }, 10);
     
 }
+
