@@ -22,10 +22,24 @@
     }
 }
 
-body {
-    -ms-overflow-style: none;
-}
+@keyframes breath{
+    0%{
+      box-shadow: 0 0 10px rgba(0,0,0,1)
+    }
+    100%{
+      box-shadow: 0 0 10px rgba(0,0,0,0.2)
+    }
+  }
 
-::-webkit-scrollbar {
-    display: none;
+.html.markdown-body {
+    position: absolute;
+    right: 0;
+    width: 48vw;
+    height: 96vh;
+    background: white;
+    border: 10px solid black;
+    animation: 1.2s board;
+    margin: 8px;
+    padding: 10px;
+    overflow: auto;
 }
