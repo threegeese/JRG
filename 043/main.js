@@ -108,7 +108,7 @@ const CSS = `.code-wrapper {
 .mouth {
     position: absolute;
     left: 50%;
-    bottom: 1px;
+    bottom: 0;
     margin-left: -160px;
     width: 320px;
     height: 110px;
