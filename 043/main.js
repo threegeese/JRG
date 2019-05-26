@@ -142,26 +142,75 @@ const CSS = `.code-wrapper {
 `;
 
 
+// !function() {
+//     function writeCode(prefix, code, fn) {
+
+//         let container = document.querySelector("#code");
+//         let styleTag = document.getElementById("styleTag");
+//         let n = 0;
+//         let timer = setInterval(() => {
+//             if(n >= code.length) {
+//                 clearInterval(timer);
+//                 fn && fn();
+//             }
+//             n += 1;
+//             container.innerHTML = code.substring(0, n);
+//             styleTag.innerHTML = code.substring(0, n);
+//             container.scrollTop = container.scrollHeight;
+//         }, 10);
+//     }
+
+//     writeCode('', CSS);
+
+// }.call();
+
+
 !function() {
+
+    let duration = 50;
+    let buttons = document.querySelectorAll("button");
+    for(let i=0; i<buttons.length; i++) {
+        buttons[i].onclick = (e) => {
+            for(let j=0; j<buttons.length; j++) {
+                buttons[j].classList.remove('active');
+            }
+            e.currentTarget.classList.add('active');
+            let speed = e.currentTarget.getAttribute('data-speed');
+            switch(speed) {
+                case 'slow':
+                    duration = 100;
+                    break;
+                case 'normal':
+                    duration = 50;
+                    break;
+                case 'fast':
+                    duration = 10;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     function writeCode(prefix, code, fn) {
 
         let container = document.querySelector("#code");
         let styleTag = document.getElementById("styleTag");
         let n = 0;
-        let timer = setInterval(() => {
-            if(n >= code.length) {
-                clearInterval(timer);
+        setTimeout(function run() {
+            if(n < code.length) {
+                setTimeout(run, duration);
+            } else {
                 fn && fn();
             }
             n += 1;
             container.innerHTML = code.substring(0, n);
             styleTag.innerHTML = code.substring(0, n);
             container.scrollTop = container.scrollHeight;
-        }, 10);
+        }, duration);
+
     }
 
     writeCode('', CSS);
 
 }.call();
-
-
