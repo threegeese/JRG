@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#code {
+    overflow: hidden;
+    height: 100%;
+    padding-left: 12px;
+}
+
+.actions {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions > button {
+    margin: 5px 0;
+    border: none;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 2s;
+}
+
+.actions > button.active {
+    font-weight: bold;
+    margin-right: 24px;
+}
+
+@keyframes nose {
+    0% { transform: rotate(0deg); }
+    33% { transform: rotate(-5deg); }
+    67% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
