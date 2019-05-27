@@ -1,6 +1,7 @@
 # JS 高级基础知识
 
-## 1. 看代码
+1. 看代码
+<hr>
 
 ```JS
 // 1
@@ -29,7 +30,8 @@ true.__proto__ === Boolean.prototype        // true
 Function.prototype.__proto__ === Object.prototype      // true
 ```
 
-## 2. `new Fn()` 会执行 `Fn`，并打印出 `this`，请问这个 `this` 有哪些属性？这个 `this` 的原型有哪些属性？
+2. `new Fn()` 会执行 `Fn`，并打印出 `this`，请问这个 `this` 有哪些属性？这个 `this` 的原型有哪些属性？
+<hr>
 
 ```JS
 function Fn(){
@@ -40,15 +42,18 @@ new Fn()
 
 答：`this` 没有属性，它的原型是 `Fn` 同样的没有属性。
 
-## 3. JSON 和 JavaScript 是什么关系？JSON 和 JavaScript 的区别有哪些？
+3. JSON 和 JavaScript 是什么关系？JSON 和 JavaScript 的区别有哪些？
+<hr>
 
 答：
 
-## 4. 前端 MVC 是什么？请用代码大概说明 MVC 三个对象分别有哪些重要属性和方法。
+4. 前端 MVC 是什么？请用代码大概说明 MVC 三个对象分别有哪些重要属性和方法。
+<hr>
 
 答：
 
-## 5. 在 ES5 中如何用函数模拟一个类？
+5. 在 ES5 中如何用函数模拟一个类？
+<hr>
 
 ```JS
 function Person() {
@@ -58,6 +63,7 @@ function Person() {
 let brad = new Person();
 ```
 
-## 6. 用过 `Promise` 吗？举例说明。如果要你创建一个返回 `Promise` 对象的函数，你会怎么写？举例说明。
+6. 用过 `Promise` 吗？举例说明。如果要你创建一个返回 `Promise` 对象的函数，你会怎么写？举例说明。
+<hr>
 
 答：
