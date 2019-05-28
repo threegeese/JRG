@@ -4,7 +4,7 @@ let url = require('url');
 let port = process.argv[2];
 
 if (!port) {
-    console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？');
+    console.log('请指定端口号？\nnode server.js 8888');
     process.exit(1);
 }
 
@@ -19,7 +19,7 @@ let server = http.createServer(function (request, response) {
     let query = parsedUrl.query;
     let method = request.method;
 
-    console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
+    console.log('请包含查询字符串的路径\n' + pathWithQuery)
 
     if (path === '/sign_up' && method === 'GET') {
         let string = fs.readFileSync('./sign_up.html', 'utf8');
@@ -128,7 +128,7 @@ let server = http.createServer(function (request, response) {
 });
 
 server.listen(port);
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port);
+console.log('监听 ' + port + ' 成功\n请打开 http://localhost:' + port);
 
 function readBody(request) {
     return new Promise((resolve, reject) => {
